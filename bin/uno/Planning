@@ -1,0 +1,21 @@
+108 Cards Total (4 colors - Red, Blue, Green, Yellow) :
+    76 Number Cards :
+        Per Color :
+            One 0
+            Two of 1-9
+    24 Action Cards :
+        Per Color :
+            Two Draw2
+            Two Reverse
+            Two Skip
+    8 Wild cards :
+        4 Wild
+        4 Draw4
+        
+Create Card interface :
+    getColor() - Should be optional type because Wild and Draw4 will need colors assigned to them
+        Color options : Red, Blue, Green, Yellow
+    getValue()
+        Value options : 0-9, Draw2, Reverse, Skip, Wild, Draw4
+    setColor() - Should only work if color is not already set; essentially making colors immutable once chosen
+    
