@@ -10,8 +10,8 @@ import java.util.Optional;
 public interface Card {
     /**
      * Datatype Definition :
-     * Card = NumberCard(color : Optional<cardColor>, value : cardValue)
-     *      + ActionCard(color : Optional<cardColor>, value : cardValue)
+     * Card = NumberCard(color : cardColor, value : cardValue)
+     *      + ActionCard(color : cardColor, value : cardValue)
      *      + WildCard(color : Optional<cardColor>, value : cardValue)
      */
     
