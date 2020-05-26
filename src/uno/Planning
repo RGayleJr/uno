@@ -19,3 +19,15 @@ Create Card interface :
         Value options : 0-9, Draw2, Reverse, Skip, Wild, Draw4
     setColor() - Should only work if color is not already set; essentially making colors immutable once chosen
     
+    
+Players need to be able to :
+    play()
+    getCards()
+
+Deck needs to be able to :
+    shuffle()
+    dealCard()
+
+Table needs to be able to :
+    getCard()
+    

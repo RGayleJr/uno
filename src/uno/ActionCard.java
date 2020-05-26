@@ -15,7 +15,7 @@ public class ActionCard implements Card {
     private final Set<CardValue> legalValues = Set.of(CardValue.REVERSE, CardValue.SKIP, CardValue.DRAW2);
     /**
      * Abstract Function:
-     *      ActionCard(color, value) = an UNO card with color 'color' and face value 'value' from legalValues
+     *      ActionCard(color, value, legalValues) = an UNO card with color 'color' and face value 'value' from legalValues
      * Rep Invariant:
      *      value is from legalValues
      * Safety from Rep Exposure :
@@ -44,21 +44,25 @@ public class ActionCard implements Card {
     
     @Override
     public Optional<CardColor> getColor() {
+        checkRep();
         return Optional.of(this.color);
     }
 
     @Override
     public CardValue getValue() {
+        checkRep();
         return this.value;
     }
 
     @Override
-    public boolean setColor() {
+    public boolean setColor(CardColor color) {
+        checkRep();
         return false;
     }
 
     @Override
     public boolean equals(Object that) {
+        checkRep();
         return that instanceof ActionCard && this.sameValue((ActionCard) that);
     }
     
@@ -68,16 +72,19 @@ public class ActionCard implements Card {
      * @return true iff the two cards are equal as described in Card.java
      */
     private boolean sameValue(ActionCard that) {
+        checkRep();
         return this.getColor().equals(that.getColor()) && this.getValue().equals(that.getValue());
     }
     
     @Override
     public int hashCode() {
+        checkRep();
         return this.getColor().hashCode() * this.getValue().hashCode();
     }
     
     @Override
     public String toString() {
+        checkRep();
         return this.getColor().toString() + " " + this.getValue().toString();
     }
 }

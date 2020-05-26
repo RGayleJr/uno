@@ -29,9 +29,10 @@ public interface Card {
     /**
      * changes the color of Wild Cards that have not had a color chosen yet
      * has no effect on cards with colors chosen already 
+     * @param color color that this changes to
      * @return true if color is set, false if color was already chosen
      */
-    public boolean setColor();
+    public boolean setColor(CardColor color);
     
     /**
      * returns true iff the two cards are identical to their look in a classic game
