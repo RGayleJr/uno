@@ -5,7 +5,7 @@ package uno;
  * @author ricardogayle
  *
  */
-public enum cardValue {
+public enum CardValue {
     ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN,
     DRAW2, REVERSE, SKIP,
     WILD, DRAW4

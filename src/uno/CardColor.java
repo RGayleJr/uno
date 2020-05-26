@@ -5,6 +5,6 @@ package uno;
  * @author ricardogayle
  *
  */
-public enum cardColor {
+public enum CardColor {
     RED, BLUE, GREEN, YELLOW
 }
