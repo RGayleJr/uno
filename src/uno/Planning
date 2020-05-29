@@ -21,12 +21,13 @@ Create Card interface :
     
     
 Players need to be able to :
-    play()
+    play(Card card)
     getCards()
 
 Deck needs to be able to :
     shuffle()
     dealCard()
+    dealCard(int num)
 
 Table needs to be able to :
     getCard()

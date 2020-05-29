@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Represents a card in UNO that is either a Skip, Reverse or Draw2
+ * IMMUTABLE - Represents a card in UNO that is either a Skip, Reverse or Draw2
  * @author ricardogayle
  *
  */
@@ -19,7 +19,8 @@ public class ActionCard implements Card {
      * Rep Invariant:
      *      value is from legalValues
      * Safety from Rep Exposure :
-     *      
+     *      color and value are immutable
+     *      legalValues is never returned
      */
     
     /**
@@ -58,6 +59,12 @@ public class ActionCard implements Card {
     public boolean setColor(CardColor color) {
         checkRep();
         return false;
+    }
+    
+    @Override
+    public Card copy() {
+        checkRep();
+        return new ActionCard(this.getColor().get(), this.getValue());
     }
 
     @Override

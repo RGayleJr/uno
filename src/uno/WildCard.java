@@ -19,7 +19,8 @@ public class WildCard implements Card {
      * Rep Invariant:
      *      value is from legalValues
      * Safety from Rep Exposure:
-     * 
+     *      color and value are immutable
+     *      legalValues is never returned
      */
 
     /**
@@ -66,6 +67,11 @@ public class WildCard implements Card {
             return true;
         }
         return false;
+    }
+    
+    @Override
+    public Card copy() {
+        return new WildCard(this.getColor(), this.getValue());
     }
     
     @Override

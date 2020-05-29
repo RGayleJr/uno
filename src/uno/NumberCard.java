@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Represents a card in UNO that has a number value
+ * IMMUTABLE - Represents a card in UNO that has a number value
  * @author ricardogayle
  *
  */
@@ -22,6 +22,7 @@ public class NumberCard implements Card {
      * Safety from Rep Exposure :
      *      color is kept safe through creating a new Optional and cardColor is immutable
      *      value is kept safe because it is immutable
+     *      legalValues is never returned
      */
     
     /**
@@ -59,6 +60,12 @@ public class NumberCard implements Card {
     public boolean setColor(CardColor color) {
         checkRep();
         return false;
+    }
+    
+    @Override
+    public Card copy() {
+        checkRep();
+        return new NumberCard(this.getColor().get(), this.getValue());
     }
 
     @Override

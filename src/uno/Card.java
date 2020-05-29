@@ -35,6 +35,12 @@ public interface Card {
     public boolean setColor(CardColor color);
     
     /**
+     * Makes a copy of this
+     * @return a structurally equivalent card
+     */
+    public Card copy();
+    
+    /**
      * returns true iff the two cards are identical to their look in a classic game
      * (Wild Cards will be equal to all Wild Cards and all Draw4 will be equal to all Draw4)
      * @param that object to be compared
