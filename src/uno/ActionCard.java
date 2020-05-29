@@ -40,6 +40,8 @@ public class ActionCard implements Card {
      */
     private void checkRep() {
         assert(legalValues.contains(this.value));
+        assert(color != null);
+        assert(value != null);
     }
     
     

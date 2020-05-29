@@ -26,13 +26,20 @@ public class Table {
     /**
      * creates an empty table
      */
-    public Table() {}
+    public Table() {
+        checkRep();
+    }
+    
+    private void checkRep() {
+        assert(card != null);
+    }
     
     /**
      * Checks if table is empty or not
      * @return true iff there is no card on the pile
      */
     public boolean isPilePresent() {
+        checkRep();
         return card.isEmpty();
     }
     
@@ -43,8 +50,10 @@ public class Table {
      */
     public Optional<Card> getCard() {
         if (card.isPresent()) {
+            checkRep();
             return Optional.of(card.get().copy());
         } else {
+            checkRep();
             return Optional.empty();
         }
     }
@@ -57,6 +66,7 @@ public class Table {
      * @return true iff they are equal as described above
      */
     public boolean equals(Object that) {
+        checkRep();
         return that instanceof Table && this.sameValue((Table) that);
     }
     
@@ -67,19 +77,23 @@ public class Table {
      * @return true iff Table is equal to this
      */
     public boolean sameValue(Table that) {
+        checkRep();
         return this.getCard().equals(that.getCard());
     }
     
     @Override
     public int hashCode() {
+        checkRep();
         return this.getCard().hashCode();
     }
     
     @Override
     public String toString() {
         if (this.getCard().isEmpty()) {
+            checkRep();
             return "No Cards on Table";
         } else {
+            checkRep();
             return this.getCard().get().toString();
         }
     }
