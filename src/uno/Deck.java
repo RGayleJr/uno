@@ -60,4 +60,26 @@ public class Deck {
         }
         assert(this.deck.size() == totalNumberOfCards);
     }
+    
+    /**
+     * The number of cards left in the deck
+     * @return the number of cards in the deck
+     */
+    public int getSize() {
+        return this.deck.size();
+    }
+    
+    @Override
+    /**
+     * Prints out the deck in the order that the cards are
+     * @return string representation of the deck
+     */
+    public String toString() {
+        String deck = "Remaining Deck :";
+        for (Card card : this.deck) {
+            deck += "\n" + card.toString();
+        }
+        deck += "\n" + "End of deck";
+        return deck;
+    }
 }
