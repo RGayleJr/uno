@@ -30,7 +30,7 @@ public class Deck {
      *          are sets of the values for each corresponding type of card. totalNumberOfCards is the total number of
      *          cards in an UNO deck
      * Rep Invariant :
-     *      deck.size <= 108
+     *      deck.size <= totalNumberOfCards
      * Safety from Rep Exposure :
      *      all fields are private, final and never returned.
      *      no card within deck is ever returned, except through defensive copying
@@ -66,7 +66,19 @@ public class Deck {
         }
         Collections.shuffle(cards);
         this.deck = new LinkedList<>(cards);
-        assert(this.deck.size() == totalNumberOfCards);
+        assert(this.getSize() == this.totalNumberOfCards);
+        checkRep();
+    }
+    
+    /**
+     * method ensuring rep invaraint is kept, should be used
+     * at end of every method
+     */
+    private void checkRep() {
+        assert(this.getSize() <= this.totalNumberOfCards);
+        assert(numbers != null && !numbers.contains(null));
+        assert(wilds != null && !wilds.contains(null));
+        assert(actions != null && !actions.contains(null));
     }
     
     /**
@@ -74,6 +86,7 @@ public class Deck {
      * @return the number of cards in the deck
      */
     public int getSize() {
+        checkRep();
         return this.deck.size();
     }
     
@@ -85,6 +98,7 @@ public class Deck {
         Collections.shuffle(currDeck);
         this.deck.clear();
         this.deck.addAll(currDeck);
+        checkRep();
     }
     
     /**
@@ -92,6 +106,7 @@ public class Deck {
      * @return the card on the top of the deck
      */
     public Card deal() {
+        checkRep();
         return this.deck.removeFirst();
     }
     
@@ -105,6 +120,7 @@ public class Deck {
         for (int i = 0; i < num; i++) {
             dealt.add(this.deal());
         }
+        checkRep();
         return dealt;
     }
     
@@ -114,6 +130,7 @@ public class Deck {
     public void moveToEnd() {
         Card top = this.deal();
         this.deck.addLast(top);
+        checkRep();
     }
     
     /**
@@ -123,8 +140,10 @@ public class Deck {
     public Optional<Card> peekTop() {
         Card top = this.deck.peekFirst();
         if (top == null) {
+            checkRep();
             return Optional.empty();
         } else {
+            checkRep();
             return Optional.of(top.copy());
         }
     }
@@ -138,11 +157,16 @@ public class Deck {
      *         in the same order as this
      */
     public boolean equals(Object that) {
+        checkRep();
         return that instanceof Deck && this.deck.equals(((Deck) that).deck);
     }
     
     @Override
+    /**
+     * @return hash code that is consistent with equals()
+     */
     public int hashCode() {
+        checkRep();
         return this.deck.hashCode();
     }
     
@@ -157,6 +181,7 @@ public class Deck {
             strDeck += "\n" + card.toString();
         }
         strDeck += "\n" + "End of deck";
+        checkRep();
         return strDeck;
     }
 }

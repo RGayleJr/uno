@@ -76,7 +76,7 @@ public class Table {
      * @param that Table being compared to this
      * @return true iff Table is equal to this
      */
-    public boolean sameValue(Table that) {
+    private boolean sameValue(Table that) {
         checkRep();
         return this.getCard().equals(that.getCard());
     }

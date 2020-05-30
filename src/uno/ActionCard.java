@@ -42,8 +42,7 @@ public class ActionCard implements Card {
         assert(legalValues.contains(this.value));
         assert(color != null);
         assert(value != null);
-    }
-    
+    } 
     
     @Override
     public Optional<CardColor> getColor() {
