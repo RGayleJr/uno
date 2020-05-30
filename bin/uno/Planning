@@ -28,6 +28,11 @@ Deck needs to be able to :
     shuffle()
     dealCard()
     dealCard(int num)
+    moveToBottom()
+    Decided on a deque to be able to dealCard in O(1) time -- this will be used the most
+    shuffle() takes O(n)
+    dealCard(int num) takes O(num)
+    moveToBottom() takes O(1)
 
 Table needs to be able to :
     getCard()
