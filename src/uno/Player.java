@@ -23,6 +23,7 @@ public class Player {
      *      name is private, final, and immutable
      *      hand is never returned, except through deep copying
      *      a Card that remains in hand is never returned
+     *      copies of cards are added to hand
      */
     
     /**
@@ -46,6 +47,24 @@ public class Player {
      */
     public String getName() {
         return this.name;
+    }
+    
+    /**
+     * Adds a card to the Player's hand
+     * @param card cards to be added to player's hand
+     */
+    public void addCard(Card card) {
+        this.hand.add(card.copy());
+    }
+    
+    /**
+     * Adds multiple cards to Player's hand
+     * @param cards cards to be added to player's hand
+     */
+    public void addCards(List<Card> cards) {
+        for (Card card : cards) {
+            this.addCard(card);
+        }
     }
     
     /**

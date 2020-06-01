@@ -9,6 +9,7 @@ import java.util.Set;
 /**
  * Gameplay ADT to set up and execute gameplay of UNO
  * Gameplay and set up is described at https://service.mattel.com/instruction_sheets/42001pr.pdf
+ * with only modification being that player order is chosen randomly
  * @author ricardogayle
  *
  */
@@ -43,13 +44,24 @@ public class Gameplay {
         this.deck = new Deck();
         this.table = new Table();
         this.playerTurn = 0;
+        this.setUp();
     }
     
     /**
      * Sets up the game of UNO
      */
-    public void setUp() {
-        // TODO 
+    private void setUp() {
+        for (Player player : this.playerWheel) {
+            final int startingCards = 7;
+            final List<Card> hand = this.deck.deal(startingCards);
+            player.addCards(hand);
+        }
+        Card top = this.deck.peekTop().get();
+        while (top.getValue() == CardValue.DRAW4) {
+            this.deck.moveToEnd();
+            top = this.deck.peekTop().get();
+        }
+        // TODO
     }
     
     /**

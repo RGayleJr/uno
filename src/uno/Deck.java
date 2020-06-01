@@ -6,6 +6,7 @@ import java.util.Deque;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
 
@@ -104,8 +105,9 @@ public class Deck {
     /**
      * Deals the top card on the deck
      * @return the card on the top of the deck
+     * @throws NoSuchElementException there is no element to remove
      */
-    public Card deal() {
+    public Card deal() throws NoSuchElementException {
         checkRep();
         return this.deck.removeFirst();
     }
@@ -114,9 +116,10 @@ public class Deck {
      * Deals multiple cards
      * @param num number of cards being dealt
      * @return the set of cards that are dealt
+     * @throws NoSuchElementException there is not num elements to remove
      */
-    public Set<Card> deal(int num) {
-        Set<Card> dealt = new HashSet<>();
+    public List<Card> deal(int num) throws NoSuchElementException {
+        List<Card> dealt = new ArrayList<>();
         for (int i = 0; i < num; i++) {
             dealt.add(this.deal());
         }
