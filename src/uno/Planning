@@ -37,3 +37,9 @@ Deck needs to be able to :
 Table needs to be able to :
     getCard()
     
+Gameplay Rules(Set<Player> players, Deck deck, Table table) :
+    Setup found at : 
+        https://service.mattel.com/instruction_sheets/42001pr.pdf
+    
+    
+    

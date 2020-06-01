@@ -18,7 +18,7 @@ public class Player {
      *      Player(hand, name) = a player with the name of 'name' and has the cards
      *          in 'hand' in his hand
      * Rep Invariant :
-     *      true
+     *      name.length > 0
      * Safety From Rep Exposure :
      *      name is private, final, and immutable
      *      hand is never returned, except through deep copying
@@ -36,7 +36,7 @@ public class Player {
     }
     
     private void checkRep() {
-        assert (this.name != null);
+        assert (this.name.length() > 0);
         assert (this.hand != null && !this.hand.contains(null));
     }
     

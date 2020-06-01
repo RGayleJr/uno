@@ -3,7 +3,7 @@ package uno;
 import java.util.Optional;
 
 /**
- * The pile created from players placing cards in UNO
+ * The discard pile created from players placing cards in UNO
  * WARNING : Although this is the 'pile', it only consists of the
  *          top card, because the cards underneath are not really 
  *          necessary
@@ -11,7 +11,7 @@ import java.util.Optional;
  *
  */
 public class Table {
-    private final Optional<Card> card = Optional.empty();
+    private Optional<Card> card = Optional.empty();
     
     /**
      * Abstraction Function :
@@ -31,7 +31,7 @@ public class Table {
     }
     
     private void checkRep() {
-        assert(card != null);
+        assert(this.card != null);
     }
     
     /**
@@ -40,7 +40,7 @@ public class Table {
      */
     public boolean isPilePresent() {
         checkRep();
-        return card.isEmpty();
+        return this.card.isEmpty();
     }
     
     /**
@@ -49,13 +49,21 @@ public class Table {
      * @return a copy of the card on the table
      */
     public Optional<Card> getCard() {
-        if (card.isPresent()) {
+        if (this.card.isPresent()) {
             checkRep();
-            return Optional.of(card.get().copy());
+            return Optional.of(this.card.get().copy());
         } else {
             checkRep();
             return Optional.empty();
         }
+    }
+    
+    /**
+     * Changes the card on the table
+     * @param newCard the card that goes on the table
+     */
+    public void setCard(Card newCard) {
+        this.card = Optional.of(newCard);
     }
     
     @Override
