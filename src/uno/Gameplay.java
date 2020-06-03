@@ -1,9 +1,8 @@
 package uno;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -14,7 +13,6 @@ import java.util.Set;
  *
  */
 public class Gameplay {
-    private Map<Integer, Integer> players;
     private final List<Player> playerWheel;
     private final Deck deck;
     private final Table table;
@@ -22,11 +20,11 @@ public class Gameplay {
     
     /**
      * Abstraction Function :
-     *      Gameplay(players, playerWheel, deck, table) = A game of UNO where the key in 'players'
-     *              is the index of the Player in 'playerWheel' who has the score, of the 
-     *              corresponding value. The game is being played with 'deck' as the game's deck
-     *              and 'table' as the discard pile. 'playerTurn' is a counter used to keep track
-     *              of whose turn it is using 'playerTurn' as the index in 'playerWheel'
+     *      Gameplay(playerWheel, deck, table) = A game of UNO where the players of the game 
+     *              are listed in play8ing order in 'playerWheel'. The game is being played 
+     *              with 'deck' as the game's deck and 'table' as the discard pile. 'playerTurn'
+     *              is a counter used to keep track of whose turn it is using 'playerTurn' as 
+     *              the index in 'playerWheel'
      * Rep Invariant :
      *      2 <= players.size == playWheel.size <= 10
      *      playerTurn > 0
@@ -37,10 +35,6 @@ public class Gameplay {
     public Gameplay(Set<Player> opponents) {
         this.playerWheel = List.copyOf(opponents);
         Collections.shuffle(this.playerWheel);
-        this.players = new HashMap<>();
-        for (int i = 0; i < this.playerWheel.size(); i++) {
-            this.players.put(i, 0);
-        }
         this.deck = new Deck();
         this.table = new Table();
         this.playerTurn = 0;
@@ -61,6 +55,10 @@ public class Gameplay {
             this.deck.moveToEnd();
             top = this.deck.peekTop().get();
         }
+        // TODO
+    }
+    
+    private void nextTurn() {
         // TODO
     }
     
@@ -85,7 +83,7 @@ public class Gameplay {
      * The player whose turn it is draws a card
      * from the deck
      */
-    public void drawCard() {
+    private void drawCard() {
         // TODO
     }
     
@@ -96,5 +94,16 @@ public class Gameplay {
      */
     public void drawCard(int num) {
         // TODO
+    }
+    
+    /**
+     * Finds all the cards that can legally be placed 
+     * by the player whose turn it is
+     * @return the cards that are legal to play
+     */
+    public List<Card> findLegalPlays() {
+        final List<Card> plays = new ArrayList<>();
+        // TODO
+        return plays;
     }
 }
